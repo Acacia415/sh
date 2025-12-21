@@ -2800,7 +2800,7 @@ while true; do
 			rm -f /home/docker/${docker_name}_port.conf
 
 			sed -i "/\b${app_id}\b/d" /home/docker/appno.txt
-			echo "App has been uninstalled"
+			echo "App uninstalled"
 			send_stats "uninstall$docker_name"
 			;;
 
@@ -3905,7 +3905,7 @@ frps_panel() {
 				close_port 8055 8056
 
 				sed -i "/\b${app_id}\b/d" /home/docker/appno.txt
-				echo "App has been uninstalled"
+				echo "App uninstalled"
 				;;
 			5)
 				echo "Reverse intranet penetration service into domain name access"
@@ -4002,7 +4002,7 @@ frpc_panel() {
 				close_port 8055
 
 				sed -i "/\b${app_id}\b/d" /home/docker/appno.txt
-				echo "App has been uninstalled"
+				echo "App uninstalled"
 				;;
 
 			4)
@@ -4777,7 +4777,7 @@ dd_xitong() {
 				;;
 
 			  41)
-				send_stats "Reinstall windows 11"
+				send_stats "Reinstall Windows 11"
 				dd_xitong_2
 				bash InstallNET.sh -windows 11 -lang "cn"
 				reboot
@@ -5711,7 +5711,7 @@ create_backup() {
 	fi
 }
 
-# Restore backup
+# 恢复备份
 restore_backup() {
 	send_stats "Restore backup"
 	# Select the backup to restore
@@ -7111,7 +7111,7 @@ docker_ssh_migration() {
 
 		echo -e "${YELLOW}Transferring backup...${NC}"
 		if [[ -z "$TARGET_PASS" ]]; then
-			# Log in using key
+			# Log in with key
 			scp -P "$TARGET_PORT" -o StrictHostKeyChecking=no -r "$LATEST_TAR" "$TARGET_USER@$TARGET_IP:/tmp/"
 		fi
 
@@ -8814,7 +8814,7 @@ while true; do
 
 	  echo -e "${gl_kjlan}1.   ${color1}Pagoda panel official version${gl_kjlan}2.   ${color2}aaPanel Pagoda International Version"
 	  echo -e "${gl_kjlan}3.   ${color3}1Panel new generation management panel${gl_kjlan}4.   ${color4}NginxProxyManager visualization panel"
-	  echo -e "${gl_kjlan}5.   ${color5}OpenList multi-store file list program${gl_kjlan}6.   ${color6}Ubuntu Remote Desktop Web Version"
+	  echo -e "${gl_kjlan}5.   ${color5}OpenList multi-store file list program${gl_kjlan}6.   ${color6}Ubuntu Remote Desktop Web Edition"
 	  echo -e "${gl_kjlan}7.   ${color7}Nezha Probe VPS Monitoring Panel${gl_kjlan}8.   ${color8}QB offline BT magnetic download panel"
 	  echo -e "${gl_kjlan}9.   ${color9}Poste.io mail server program${gl_kjlan}10.  ${color10}RocketChat multi-person online chat system"
 	  echo -e "${gl_kjlan}------------------------"
@@ -9259,7 +9259,7 @@ while true; do
 					rm -rf /home/docker/mail
 
 					sed -i "/\b${app_id}\b/d" /home/docker/appno.txt
-					echo "App has been uninstalled"
+					echo "App uninstalled"
 					;;
 
 				*)
@@ -9313,7 +9313,7 @@ while true; do
 			docker rm -f db
 			docker rmi -f mongo:latest
 			rm -rf /home/docker/mongo
-			echo "App has been uninstalled"
+			echo "App uninstalled"
 		}
 
 		docker_app_plus
@@ -9411,7 +9411,7 @@ while true; do
 		docker_app_uninstall() {
 			cd /home/docker/cloud/ && docker compose down --rmi all
 			rm -rf /home/docker/cloud
-			echo "App has been uninstalled"
+			echo "App uninstalled"
 		}
 
 		docker_app_plus
@@ -10296,7 +10296,7 @@ while true; do
 			docker rmi -f grafana/grafana:latest
 
 			rm -rf /home/docker/monitoring
-			echo "App has been uninstalled"
+			echo "App uninstalled"
 		}
 
 		docker_app_plus
@@ -10518,7 +10518,7 @@ while true; do
 		docker_app_uninstall() {
 			cd  /home/docker/dify/docker/ && docker compose down --rmi all
 			rm -rf /home/docker/dify
-			echo "App has been uninstalled"
+			echo "App uninstalled"
 		}
 
 		docker_app_plus
@@ -10569,7 +10569,7 @@ while true; do
 		docker_app_uninstall() {
 			cd  /home/docker/new-api/ && docker compose down --rmi all
 			rm -rf /home/docker/new-api
-			echo "App has been uninstalled"
+			echo "App uninstalled"
 		}
 
 		docker_app_plus
@@ -10610,7 +10610,7 @@ while true; do
 			cd /opt
 			rm -rf jumpserver-installer*/
 			rm -rf jumpserver
-			echo "App has been uninstalled"
+			echo "App uninstalled"
 		}
 
 		docker_app_plus
@@ -10673,7 +10673,7 @@ while true; do
 		docker_app_uninstall() {
 			cd  /home/docker/ragflow/docker/ && docker compose down --rmi all
 			rm -rf /home/docker/ragflow
-			echo "App has been uninstalled"
+			echo "App uninstalled"
 		}
 
 		docker_app_plus
@@ -11001,7 +11001,7 @@ while true; do
 		docker_app_uninstall() {
 			cd /home/docker/moontv/ && docker compose down --rmi all
 			rm -rf /home/docker/moontv
-			echo "App has been uninstalled"
+			echo "App uninstalled"
 		}
 
 		docker_app_plus
@@ -11222,7 +11222,7 @@ while true; do
 		  docker_app_uninstall() {
 			  cd /home/docker/linkwarden && docker compose down --rmi all
 			  rm -rf /home/docker/linkwarden
-			  echo "App has been uninstalled"
+			  echo "App uninstalled"
 		  }
 
 		  docker_app_plus
@@ -11272,7 +11272,7 @@ while true; do
 			  cd "$(ls -dt */ | head -n 1)"
 			  docker compose down --rmi all
 			  rm -rf /home/docker/jitsi
-			  echo "App has been uninstalled"
+			  echo "App uninstalled"
 		  }
 
 		  docker_app_plus
@@ -11407,7 +11407,7 @@ while true; do
 		  docker_app_uninstall() {
 			  cd /home/docker/${docker_name} && docker compose down --rmi all
 			  rm -rf /home/docker/${docker_name}
-			  echo "App has been uninstalled"
+			  echo "App uninstalled"
 		  }
 
 		  docker_app_plus
@@ -11634,7 +11634,7 @@ while true; do
 		docker_app_uninstall() {
 			cd /home/docker/gitea/ && docker compose down --rmi all
 			rm -rf /home/docker/gitea
-			echo "App has been uninstalled"
+			echo "App uninstalled"
 		}
 
 		docker_app_plus
@@ -11772,7 +11772,7 @@ while true; do
 		docker_app_uninstall() {
 			cd /home/docker/paperless/ && docker compose down --rmi all
 			rm -rf /home/docker/paperless
-			echo "App has been uninstalled"
+			echo "App uninstalled"
 		}
 
 		docker_app_plus
@@ -11826,7 +11826,7 @@ while true; do
 		docker_app_uninstall() {
 			cd /home/docker/2fauth/ && docker compose down --rmi all
 			rm -rf /home/docker/2fauth
-			echo "App has been uninstalled"
+			echo "App uninstalled"
 		}
 
 		docker_app_plus
@@ -12059,7 +12059,7 @@ while true; do
 		docker_app_uninstall() {
 			cd /home/docker/dsm/ && docker compose down --rmi all
 			rm -rf /home/docker/dsm
-			echo "App has been uninstalled"
+			echo "App uninstalled"
 		}
 
 		docker_app_plus
@@ -12129,7 +12129,7 @@ while true; do
 		docker_app_uninstall() {
 			cd  /home/docker/MoneyPrinterTurbo/ && docker compose down --rmi all
 			rm -rf /home/docker/MoneyPrinterTurbo
-			echo "App has been uninstalled"
+			echo "App uninstalled"
 		}
 
 		docker_app_plus
@@ -12198,7 +12198,7 @@ while true; do
 		docker_app_uninstall() {
 			cd  /home/docker/umami/ && docker compose down --rmi all
 			rm -rf /home/docker/umami
-			echo "App has been uninstalled"
+			echo "App uninstalled"
 		}
 
 		docker_app_plus
@@ -12748,7 +12748,7 @@ EOF
 						;;
 					2)
 						rm -f /etc/gai.conf
-						echo "Switched to IPv6 first"
+						echo "Switched to IPv6 priority"
 						send_stats "Switched to IPv6 priority"
 						;;
 
@@ -14102,7 +14102,7 @@ echo "------------------------"
 echo -e "${gl_zi}V.PS 6.9 dollars per month Tokyo Softbank 2 cores 1G memory 20G hard drive 1T traffic per month${gl_bai}"
 echo -e "${gl_bai}URL: https://vps.hosting/cart/tokyo-cloud-kvm-vps/?id=148&?affid=1355&?affid=1355${gl_bai}"
 echo "------------------------"
-echo -e "${gl_kjlan}More popular VPS deals${gl_bai}"
+echo -e "${gl_kjlan}More popular VPS offers${gl_bai}"
 echo -e "${gl_bai}Website: https://kejilion.pro/topvps/${gl_bai}"
 echo "------------------------"
 echo ""

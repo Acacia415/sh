@@ -895,7 +895,7 @@ open_port() {
 	done
 
 	save_iptables_rules
-	send_stats "ポートがオープンされました"
+	send_stats "ポートがオープンしました"
 }
 
 
@@ -1218,7 +1218,7 @@ iptables_panel() {
 				  ;;
 
 			  15)
-				  read -e -p "ブロックされている国コードを入力してください (CN US JP のように、複数の国コードをスペースで区切ることができます):" country_code
+				  read -e -p "ブロックされている国コードを入力してください (CN US JP のように、複数の国コードをスペースで区切ることができます)。" country_code
 				  manage_country_rules block $country_code
 				  send_stats "国を許可する$country_codeIP"
 				  ;;
@@ -2439,7 +2439,7 @@ check_docker_image_update() {
 	# 公式画像のサポートを追加
 	[[ "$image_repo" != */* ]] && image_repo="library/$image_repo"
 
-	# Docker Hub APIからイメージのリリース時刻を取得する
+	# Docker Hub APIからイメージのリリース時間を取得する
 	local hub_info=$(curl -s "https://hub.docker.com/v2/repositories/$image_repo/tags/$image_tag")
 	local last_updated=$(echo "$hub_info" | jq -r '.last_updated' 2>/dev/null)
 
@@ -2759,7 +2759,7 @@ while true; do
 		1)
 			setup_docker_dir
 			check_disk_space $app_size /home/docker
-			read -e -p "アプリケーションの外部サービス ポートを入力し、Enter キーを押して、それをデフォルトで使用します。${docker_port}ポート：" app_port
+			read -e -p "アプリケーションの外部サービス ポートを入力し、Enter キーを押してデフォルトで使用します。${docker_port}ポート：" app_port
 			local app_port=${app_port:-${docker_port}}
 			local docker_port=$app_port
 
@@ -2872,7 +2872,7 @@ docker_app_plus() {
 			1)
 				setup_docker_dir
 				check_disk_space $app_size /home/docker
-				read -e -p "アプリケーションの外部サービス ポートを入力し、Enter キーを押して、それをデフォルトで使用します。${docker_port}ポート：" app_port
+				read -e -p "アプリケーションの外部サービス ポートを入力し、Enter キーを押してデフォルトで使用します。${docker_port}ポート：" app_port
 				local app_port=${app_port:-${docker_port}}
 				local docker_port=$app_port
 				install jq
@@ -3476,7 +3476,7 @@ ldnmp_web_status() {
 
 			8)
 				send_stats "サイト構成を編集する"
-				read -e -p "サイト構成を編集するには、編集するドメイン名を入力してください:" yuming
+				read -e -p "サイト設定を編集するには、編集するドメイン名を入力してください:" yuming
 				install nano
 				nano /home/web/conf.d/$yuming.conf
 				docker exec nginx nginx -s reload
@@ -4341,7 +4341,7 @@ while true; do
 	echo "2.国内DNSの最適化:"
 	echo " v4: 223.5.5.5 183.60.83.19"
 	echo " v6: 2400:3200::1 2400:da00::6666"
-	echo "3. DNS 構成を手動で編集する"
+	echo "3. DNS 設定を手動で編集する"
 	echo "------------------------"
 	echo "0. 前のメニューに戻る"
 	echo "------------------------"
@@ -4502,7 +4502,7 @@ sed -i 's/^\s*#\?\s*PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_confi
 sed -i 's/^\s*#\?\s*PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
 rm -rf /etc/ssh/sshd_config.d/* /etc/ssh/ssh_config.d/*
 restart_ssh
-echo -e "${gl_lv}ROOTログインの設定は完了です！${gl_bai}"
+echo -e "${gl_lv}ROOTログインの設定が完了しました！${gl_bai}"
 
 }
 
@@ -5363,7 +5363,7 @@ Kernel_optimize() {
 	  echo -e "${gl_huang}ヒント：${gl_bai}本番環境では注意して使用してください。"
 	  echo "--------------------"
 	  echo "1. ハイパフォーマンス最適化モード: システムのパフォーマンスを最大化し、ファイル記述子、仮想メモリ、ネットワーク設定、キャッシュ管理、CPU 設定を最適化します。"
-	  echo "2. バランスのとれた最適化モード: パフォーマンスとリソース消費のバランスをとり、日常的な使用に適しています。"
+	  echo "2. バランスのとれた最適化モード: パフォーマンスとリソース消費のバランスをとり、日常の使用に適しています。"
 	  echo "3. Web サイト最適化モード: Web サイトサーバーを最適化して、同時接続処理能力、応答速度、全体的なパフォーマンスを向上させます。"
 	  echo "4. ライブ ブロードキャスト最適化モード: ライブ ストリーミングの特別なニーズを最適化し、遅延を削減し、送信パフォーマンスを向上させます。"
 	  echo "5. ゲームサーバー最適化モード: ゲームサーバーを最適化して、同時処理能力と応答速度を向上させます。"
@@ -6006,7 +6006,7 @@ mount_partition() {
 	MOUNT_POINT="/mnt/$PARTITION"
 	mkdir -p "$MOUNT_POINT"
 
-	# パーティションをマウントする
+	# パーティションのマウント
 	mount "/dev/$PARTITION" "$MOUNT_POINT"
 
 	if [ $? -eq 0 ]; then
@@ -7111,7 +7111,7 @@ docker_ssh_migration() {
 
 		echo -e "${YELLOW}バックアップを転送中...${NC}"
 		if [[ -z "$TARGET_PASS" ]]; then
-			# キーを使用してログインする
+			# キーでログイン
 			scp -P "$TARGET_PORT" -o StrictHostKeyChecking=no -r "$LATEST_TAR" "$TARGET_USER@$TARGET_IP:/tmp/"
 		fi
 
@@ -8504,7 +8504,7 @@ linux_ldnmp() {
 		case "$choice" in
 		  [Yy])
 			read -e -p "リモートサーバーのIPを入力してください:" remote_ip
-			read -e -p "ターゲットサーバーの SSH ポート [デフォルト 22]:" TARGET_PORT
+			read -e -p "ターゲット サーバーの SSH ポート [デフォルト 22]:" TARGET_PORT
 			local TARGET_PORT=${TARGET_PORT:-22}
 			if [ -z "$remote_ip" ]; then
 			  echo "エラー: リモート サーバーの IP を入力してください。"
@@ -12300,7 +12300,7 @@ linux_work() {
 	  echo -e "バックエンドワークスペース"
 	  echo -e "システムは、バックグラウンドで永続的に実行できるワークスペースを提供し、長期的なタスクを実行するために使用できます。"
 	  echo -e "SSH を切断しても、ワークスペース内のタスクは中断されず、タスクはバックグラウンドで残ります。"
-	  echo -e "${gl_huang}ヒント：${gl_bai}ワークスペースに入ったら、Ctrl+b を使用し、次に d を単独で押してワークスペースを終了します。"
+	  echo -e "${gl_huang}ヒント：${gl_bai}ワークスペースに入ったら、Ctrl+b を使用し、d だけを押してワークスペースを終了します。"
 	  echo -e "${gl_kjlan}------------------------"
 	  echo "現在存在するワークスペースのリスト"
 	  echo -e "${gl_kjlan}------------------------"
@@ -12962,7 +12962,7 @@ EOF
 				# 現在のシステムのタイムゾーンを取得する
 				local timezone=$(current_timezone)
 
-				# 現在のシステム時刻を取得する
+				# 現在のシステム時刻を取得します
 				local current_time=$(date +"%Y-%m-%d %H:%M:%S")
 
 				# タイムゾーンと時間を表示する
@@ -12977,7 +12977,7 @@ EOF
 				echo "3. 東京、日本時間 4. ソウル、韓国時間"
 				echo "5. シンガポール時間 6. インド、コルカタ時間"
 				echo "7. アラブ首長国連邦、ドバイ時間 8. オーストラリア、シドニー時間"
-				echo "9. タイ・バンコク時間"
+				echo "9.タイ・バンコク時間"
 				echo "------------------------"
 				echo "ヨーロッパ"
 				echo "11. ロンドン、イギリス時間 12. パリ、フランス時間"
@@ -14102,7 +14102,7 @@ echo "------------------------"
 echo -e "${gl_zi}V.PS 月額 6.9 ドル 東京ソフトバンク 2 コア 1G メモリ 20G ハードドライブ 月額 1T トラフィック${gl_bai}"
 echo -e "${gl_bai}URL：https://vps.hosting/cart/tokyo-cloud-kvm-vps/?id=148&?affid=1355&?affid=1355${gl_bai}"
 echo "------------------------"
-echo -e "${gl_kjlan}さらに人気のある VPS セール${gl_bai}"
+echo -e "${gl_kjlan}さらに人気のある VPS オファー${gl_bai}"
 echo -e "${gl_bai}ウェブサイト：https://kejilion.pro/topvps/${gl_bai}"
 echo "------------------------"
 echo ""
@@ -14251,7 +14251,7 @@ echo -e "${gl_kjlan}p.   ${gl_bai}Eudemons Parlu サーバー開始スクリプ�
 echo -e "${gl_kjlan}------------------------${gl_bai}"
 echo -e "${gl_kjlan}00.  ${gl_bai}スクリプトの更新"
 echo -e "${gl_kjlan}------------------------${gl_bai}"
-echo -e "${gl_kjlan}0.   ${gl_bai}スクリプトを終了します"
+echo -e "${gl_kjlan}0.   ${gl_bai}終了スクリプト"
 echo -e "${gl_kjlan}------------------------${gl_bai}"
 read -e -p "選択肢を入力してください:" choice
 
